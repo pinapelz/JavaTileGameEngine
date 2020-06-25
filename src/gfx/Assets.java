@@ -16,12 +16,12 @@ import javax.swing.JOptionPane;
  */
 public class Assets {
 
-    public static BufferedImage player, bush, grass, stone, tree, dummy, wood, inventoryScreen, rock, rock_item;
+    public static BufferedImage player, bush, grass, stone, tree, dummy, wood, inventoryScreen, rock, rock_item,pebble_path,gate;
     public static BufferedImage[] player_down, player_up, player_left, player_right, player_idle;
     public static BufferedImage[] player_attack_left, player_attack_right, player_attack_up, player_attack_down;
     public static String hitSound;
     public static BufferedImage[] btn_attack, btn_defend;
-    public static BufferedImage textWASD, textArrows;
+    public static BufferedImage textWASD, textArrows, textInventory;
     public static BufferedImage[] btn_start;
     private static final int width = 31, height = 31;
     public static Font font28;
@@ -72,6 +72,7 @@ public class Assets {
         player_right[1] = sheet.crop((width * 5) + 6, (height * 6) + 4, width, height - 1);
         player_right[2] = sheet.crop((width * 6) + 7, (height * 6) + 4, width, height - 1);
         player_right[3] = sheet.crop((width * 7) + 8, (height * 6) + 4, width, height - 1);
+        pebble_path = sheet.crop((width*2)+3, height*2+3, width+1, height);
         player_attack_right[0] = sheet.crop((width * 3) + 4, (height * 5) + 4, width, height - 1);
         /*player_left[0] = sheet.crop((width*3)+4,(height)+2,width,height);
         player_right[0] = sheet.crop((width*2)+4,(height)+2,width-1,height);*/
@@ -97,6 +98,7 @@ public class Assets {
         rock = sheet.crop((width * 2) + 4, (height) + 2, width - 1, height);
         dummy = sheet.crop((width * 5) + 6, 1, width - 1, height);
         btn_attack[0] = sheet.crop((width * 4) + 6, (height * 2)+2, width * 2 +1, height);
+        gate = sheet.crop((width*4)+5, height*2+3, width, height-1);
         btn_attack[1] = btn_attack[0];
         btn_defend[0] = sheet.crop((width*6)+7,(height*2)+3,width*2,height);
         btn_defend[1] = btn_defend[0];
@@ -104,6 +106,7 @@ public class Assets {
         bush = sheet.crop((width * 3) + 4, 1, width, height);
         grass = sheet.crop((width * 2) + 3, 2, width, height - 2);
         hitSound = "res/sounds/hit.wav";
+        textInventory = sheet.crop((width*9)+11,1,width*3,height*2);
 
     }
 

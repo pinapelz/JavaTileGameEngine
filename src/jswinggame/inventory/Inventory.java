@@ -49,6 +49,9 @@ private int invDescX = 440, invDescY = 300;
     public boolean isActive() {
         return active;
     }
+    public int getItem(int id){
+        return inventoryItems.get(id).getCount();
+    }
 
     public void tick() {
 		if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_E))

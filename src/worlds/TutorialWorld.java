@@ -12,6 +12,10 @@ import jswinggame.Handler;
 import jswinggame.entities.EntityManager;
 import jswinggame.entities.creatures.Player;
 import jswinggame.entities.statics.ArrowsText;
+import jswinggame.entities.statics.Gate;
+import jswinggame.entities.statics.InventoryText;
+import jswinggame.entities.statics.Rock;
+import jswinggame.entities.statics.Tree;
 import jswinggame.entities.statics.WASDText;
 import jswinggame.item.ItemManager;
 import tiles.Tile;
@@ -37,8 +41,13 @@ public class TutorialWorld extends World{
 		this.handler = handler;
                 itemManager = new ItemManager(handler);
 		entityManager = new EntityManager(handler, new Player(handler, 100, 100));
-                entityManager.addEntity(new WASDText(handler,100,200));
+                entityManager.addEntity(new WASDText(handler,100,100));
                 entityManager.addEntity(new ArrowsText(handler,725,100));
+                entityManager.addEntity(new InventoryText(handler,1000,600));
+                entityManager.addEntity(new Tree(handler,524,358));
+                entityManager.addEntity(new Rock(handler,776,235));
+                entityManager.addEntity(new Gate(handler,1283,319));
+                entityManager.addEntity(new Gate(handler,1283,390));
 		
 		loadWorld(path);
 		

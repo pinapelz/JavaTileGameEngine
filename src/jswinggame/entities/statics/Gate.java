@@ -16,14 +16,14 @@ import tiles.Tile;
  *
  * @author Pinapelz
  */
-public class Bush extends StaticEntity {
+public class Gate extends StaticEntity {
 
-    public Bush(Handler handler, float x, float y) {
+    private static Handler handler;
+
+    public Gate(Handler handler, float x, float y) {
         super(handler, x, y, Tile.TILEWIDTH, Tile.TILEHEIGHT);
-        bounds.x = 14;
-        bounds.y = (int) (height / 3);
-        bounds.width = 40;
-        bounds.height = 20;
+        this.setHealth(999999999);
+        this.handler = handler;
         //1.5
     }
 
@@ -32,18 +32,35 @@ public class Bush extends StaticEntity {
 
     }
 
-    public void die() {
-        handler.getWorld().getItemManager().addItem(Item.woodItem.createNew((int) x, (int) y));
+    @Override
+    public void hurt(int damage) {
+        try {
+            System.out.println(handler.getWorld().getEntityManager().getPlayer().getInventory().getItem(0));
+        } catch (Exception e) {
 
+        }
+        //}
+    }
+
+    public void setBounds(int x, int y, int width, int height) {
+        bounds.x = x;
+        bounds.y = y;
+        bounds.width = width;
+        bounds.height = height;
     }
 
     @Override
     public void render(Graphics g) {
-        g.drawImage(Assets.bush, (int) (x - handler.getGameCamera().getxOffset()), (int) (y - handler.getGameCamera().getyOffset()), width, height, null);
+        g.drawImage(Assets.gate, (int) (x - handler.getGameCamera().getxOffset()), (int) (y - handler.getGameCamera().getyOffset()), width, height, null);
 
         /*   g.setColor(Color.red);
 		g.fillRect((int) (x + bounds.x - handler.getGameCamera().getxOffset()),
 				(int) (y + bounds.y - handler.getGameCamera().getyOffset()),
 				bounds.width, bounds.height);*/
+    }
+
+    @Override
+    public void die() {
+
     }
 }

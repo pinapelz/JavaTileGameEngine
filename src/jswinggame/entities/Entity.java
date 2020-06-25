@@ -5,8 +5,12 @@
  */
 package jswinggame.entities;
 
+import gfx.Assets;
 import java.awt.Graphics;
 import java.awt.Rectangle;
+import java.io.File;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
 import jswinggame.Game;
 import jswinggame.Handler;
 
@@ -34,7 +38,24 @@ public abstract class Entity {
         this.height = height;
         bounds = new Rectangle(0, 0, width, height);
     }
+        public void play(String filename) {
+        try {
+
+       
+            
+            Clip clip = AudioSystem.getClip();
+            
+            clip.open(AudioSystem.getAudioInputStream(new File(filename)));
+            clip.setFramePosition(0);
+
+            clip.start();
+        } catch (Exception exc) {
+            exc.printStackTrace(System.out);
+        }
+    }
+
     public void hurt(int damage){
+         play(Assets.hitSound);
         health-=damage;
         if(health<=0){
             active = false;
