@@ -9,6 +9,7 @@ import java.awt.Graphics;
 import jswinggame.Game;
 import jswinggame.Handler;
 
+
 /**
  *
  * @author donal
@@ -16,7 +17,7 @@ import jswinggame.Handler;
 public abstract class State {
 
     private static State currentState = null;
-
+    
     public static void setState(State state) {
         currentState = state;
     }

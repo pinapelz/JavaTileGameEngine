@@ -8,10 +8,7 @@ package jswinggame;
 import Input.KeyManager;
 import Input.MouseManager;
 import display.Display;
-import gfx.Assets;
-import gfx.GameCamera;
-import gfx.ImageLoader;
-import gfx.SpriteSheet;
+
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.FontMetrics;
@@ -21,9 +18,7 @@ import java.awt.image.BufferedImage;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import jswinggame.states.GameState;
-import jswinggame.states.MenuState;
-import jswinggame.states.State;
+
 import jswinggame.*;
 
 
@@ -59,14 +54,13 @@ public class Game implements Runnable {
     }
     private BufferStrategy bs;
     private Graphics g;
-    public State gameState;
-    public State menuState;
-    public State  encounterState;
+
     private KeyManager keyManager;
-    private GameCamera gameCamera;
+
     private Handler hand;
 
     public Game(String title, int width, int height) {
+       
         this.width = width;
         this.height = height;
         this.title = title;
@@ -82,12 +76,7 @@ public class Game implements Runnable {
         display.getFrame().addMouseMotionListener(mouseManager);
         display.getCanvas().addMouseListener(mouseManager);
         display.getCanvas().addMouseMotionListener(mouseManager);
-        Assets.init();
-        hand = new Handler(this);
-        gameState = new GameState(hand);
-        gameCamera = new GameCamera(hand, 0, 0);
-        menuState = new MenuState(hand);
-        State.setState(menuState);
+
 
     }
 
@@ -95,9 +84,7 @@ public class Game implements Runnable {
         return keyManager;
     }
 
-    public GameCamera getGameCamera() {
-        return gameCamera;
-    }
+
 
     public MouseManager getMouseManager() {
         return mouseManager;
@@ -105,9 +92,7 @@ public class Game implements Runnable {
 
     private void update() {
         keyManager.tick();
-        if (State.getState() != null) {
-            State.getState().tick();
-        }
+      
 
     }
 
@@ -120,9 +105,7 @@ public class Game implements Runnable {
         }
         g = bs.getDrawGraphics();
         g.clearRect(0, 0, width, height);
-        if (State.getState() != null) {
-            State.getState().render(g);
-        }
+
         g.setColor(Color.YELLOW);
         g.setFont(new Font("Arial", Font.BOLD, 13));
         g.drawString("FPS: " + Integer.toString(displayfps), 0, 10);
@@ -190,4 +173,5 @@ public class Game implements Runnable {
             }
         }
     }
+  
 }

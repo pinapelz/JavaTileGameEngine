@@ -5,9 +5,7 @@
  */
 package jswinggame.states;
 
-import gfx.Animation;
-import gfx.Assets;
-import static gfx.Assets.font28;
+
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
@@ -24,26 +22,19 @@ import jswinggame.ui.UIManager;
 public class MenuState extends State {
 
     private UIManager uiManager;
-    private Animation buttonAnim;
+
     public MenuState(Handler handler) {
         super(handler);
         
         uiManager = new UIManager(handler);
         handler.getMouseManager().setUIManager(uiManager);
-       buttonAnim =  new Animation(150,Assets.btn_start);
-        uiManager.addObject(new UIImageButton(285, 350, 128, 64, Assets.btn_start, new ClickListener() {
-            @Override
-            public void onClick() {
-                handler.getMouseManager().setUIManager(null);
-                State.setState(handler.getGame().gameState);
-            }
-        }));
+      
     }
 
     @Override
     public void tick() {
       
-        buttonAnim.tick();
+ 
         uiManager.tick();
 
     }
@@ -54,13 +45,13 @@ public class MenuState extends State {
         g.setColor(Color.BLACK);
         g.fillRect(0, 0, handler.getGame().getWidth(), handler.getGame().getHeight());
         g.setColor(Color.WHITE);
-        g.setFont(font28);
+   
         g.drawString("An Actually Generic", 110, 100);
         g.drawString("Adventure Game", 170, 140);
         g.setFont(new Font("Arial",Font.BOLD,25));
         g.drawString("A Java Game Engine Technical Test",150,230);
         uiManager.render(g);
-        g.drawImage(buttonAnim.getCurrentFrame(), 285, 350,128,64,null);
+ 
         
         //Stripped Down UI 
         /*   g.fillRect(196, 235, 300, 100);

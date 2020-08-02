@@ -3,9 +3,8 @@ package jswinggame;
 
 import Input.KeyManager;
 import Input.MouseManager;
-import gfx.GameCamera;
-import jswinggame.Game;
-import worlds.World;
+
+
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -19,7 +18,7 @@ import worlds.World;
  */
 public class Handler {
     private Game game;
-    private World world;
+
     
     
     
@@ -37,9 +36,7 @@ public class Handler {
     public KeyManager getKeyManager(){
         return game.getKeyManager();
     }
-    public GameCamera getGameCamera(){
-        return game.getGameCamera();
-    }
+
     public Game getGame() {
         return game;
     }
@@ -51,12 +48,6 @@ public class Handler {
         this.game = game;
     }
 
-    public World getWorld() {
-        return world;
-    }
 
-    public void setWorld(World world) {
-        this.world = world;
-    }
     
 }
